@@ -35,7 +35,7 @@ export const SegmentedControl = ({
 const styles = StyleSheet.create({
   controlContainer: {
     flexDirection: 'row',
-    backgroundColor: COLORS.secondaryGray,
+    backgroundColor: COLORS.graySecondary,
     padding: 2,
     borderRadius: 12,
     justifyContent: 'space-between',
@@ -55,12 +55,12 @@ const styles = StyleSheet.create({
   activeOption: {
     backgroundColor: '#fff',
     borderWidth: 0.5,
-    borderColor: '#00000020', // Более светлый полупрозрачный черный (20%)
+    borderColor: '#00000020',
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.05, // Более мягкая тень
+    shadowOpacity: 0.05,
     shadowRadius: 6,
-    elevation: 2, // Уменьшаем тень для Android
+    elevation: 2,
   },
   optionText: {
     fontSize: 13,
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   },
   separator: {
     width: 1,
-    height: 12, // Высота разделителя
-    backgroundColor: '#D9D9D9', // Серый цвет разделителя
+    height: 12,
+    backgroundColor: COLORS.lightGray,
   },
 });

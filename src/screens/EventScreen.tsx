@@ -3,6 +3,7 @@ import {Screen} from '../components';
 import {EVENTS} from '../mocks/data';
 import {RootStackScreenProps} from '../navigation/types';
 import {ChevronRightIcon} from '../components/icons';
+import {COLORS} from '../constants/colors';
 
 const InfoSection = ({title, value}: {title: string; value: string}) => (
   <View style={styles.infoSection}>
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
     padding: 12,
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#57555533',
+    borderColor: COLORS.graySecondary,
   },
   infoText: {
     fontSize: 16,

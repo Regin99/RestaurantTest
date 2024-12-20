@@ -1,13 +1,15 @@
 import React, {useCallback, useState} from 'react';
 import {FlatList, StyleSheet} from 'react-native';
-import {Screen, StickyButton} from '../components';
-import {SegmentedControl, ShopCard} from '../components/shop';
 import {useSelector} from 'react-redux';
+
 import {selectTotalPrice} from '../store/slices/cartSlice';
 import {CATEGORIES, SHOP_ITEMS} from '../mocks/data';
-import {CartIconSmall} from '../components/icons';
 import {RootStackScreenProps} from '../navigation/types';
 import {ShopItemType} from '../types/data';
+
+import {Screen, StickyButton} from '../components';
+import {SegmentedControl, ShopCard} from '../components/shop';
+import {CartIconSmall} from '../components/icons';
 
 type ShopScreenProps = RootStackScreenProps<'Shop'>;
 

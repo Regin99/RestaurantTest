@@ -1,6 +1,9 @@
 export const COLORS = {
-  mainGreen: '#66C008',
-  secondaryGray: '#7878801F',
+  green: '#66C008',
+  black: '#303030',
+  gray: '#414141',
+  graySecondary: '#7878801F',
   white: '#FFFFFF',
-  darkGray: '#303030',
+  whiteSecondary: '#F1F1F1',
+  lightGray: '#D9D9D9',
 };

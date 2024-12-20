@@ -1,4 +1,7 @@
 import {Text, TouchableOpacity, View, StyleSheet} from 'react-native';
+
+import {COLORS} from '../constants/colors';
+
 import {MinusIcon, PlusIcon} from './icons';
 
 type RemoveAddSectionProps = {
@@ -11,19 +14,17 @@ export const RemoveAddSection = ({
   quantity,
   onAdd,
   onRemove,
-}: RemoveAddSectionProps) => {
-  return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.button} onPress={onRemove}>
-        <MinusIcon />
-      </TouchableOpacity>
-      <Text style={styles.quantity}>{quantity}</Text>
-      <TouchableOpacity style={styles.button} onPress={onAdd}>
-        <PlusIcon />
-      </TouchableOpacity>
-    </View>
-  );
-};
+}: RemoveAddSectionProps) => (
+  <View style={styles.container}>
+    <TouchableOpacity style={styles.button} onPress={onRemove}>
+      <MinusIcon />
+    </TouchableOpacity>
+    <Text style={styles.quantity}>{quantity}</Text>
+    <TouchableOpacity style={styles.button} onPress={onAdd}>
+      <PlusIcon />
+    </TouchableOpacity>
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
     height: 38,
     flex: 1,
     gap: 12,
-    backgroundColor: '#F1F1F1',
+    backgroundColor: COLORS.whiteSecondary,
   },
   button: {
     flex: 1,

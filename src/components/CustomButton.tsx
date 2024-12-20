@@ -1,5 +1,5 @@
-import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+
 import {COLORS} from '../constants/colors';
 
 type ButtonProps = {
@@ -15,41 +15,23 @@ export const CustomButton = ({
   label,
   secondary,
   subLabel,
-}: ButtonProps) => {
-  return (
-    <TouchableOpacity
-      style={[
-        styles.button,
-        secondary && styles.secondaryButton,
-        !onPress && styles.disabled,
-      ]}
-      onPress={onPress}
-      disabled={!onPress}>
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flex: 1,
-          paddingHorizontal: 24,
-        }}>
-        <Text style={[styles.label, secondary && styles.secondaryLabel]}>
-          {label}
-        </Text>
-        {subLabel && (
-          <Text
-            style={{
-              color: COLORS.white,
-              flex: 1,
-              textAlign: 'right',
-            }}>
-            {subLabel}
-          </Text>
-        )}
-      </View>
-    </TouchableOpacity>
-  );
-};
+}: ButtonProps) => (
+  <TouchableOpacity
+    style={[
+      styles.button,
+      secondary && styles.secondaryButton,
+      !onPress && styles.disabled,
+    ]}
+    onPress={onPress}
+    disabled={!onPress}>
+    <View style={styles.buttonContent}>
+      <Text style={[styles.label, secondary && styles.secondaryLabel]}>
+        {label}
+      </Text>
+      {subLabel && <Text style={styles.subLabel}>{subLabel}</Text>}
+    </View>
+  </TouchableOpacity>
+);
 
 export const StickyButton = ({
   onPress,
@@ -74,7 +56,7 @@ export const StickyButton = ({
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: COLORS.mainGreen,
+    backgroundColor: COLORS.green,
     borderRadius: 16,
     height: 48,
     gap: 12,
@@ -84,7 +66,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   stickyButton: {
-    backgroundColor: COLORS.mainGreen,
+    backgroundColor: COLORS.green,
     borderRadius: 16,
     height: 38,
     position: 'absolute',
@@ -98,16 +80,28 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   secondaryButton: {
-    backgroundColor: COLORS.secondaryGray,
+    backgroundColor: COLORS.graySecondary,
     height: 38,
   },
   label: {
     color: COLORS.white,
   },
   secondaryLabel: {
-    color: COLORS.darkGray,
+    color: COLORS.black,
   },
   disabled: {
     opacity: 0.5,
+  },
+  buttonContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flex: 1,
+    paddingHorizontal: 24,
+  },
+  subLabel: {
+    color: COLORS.white,
+    flex: 1,
+    textAlign: 'right',
   },
 });

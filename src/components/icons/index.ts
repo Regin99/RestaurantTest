@@ -11,3 +11,5 @@ export * from './CartIconSmall';
 export * from './ChevronRightIcon';
 export * from './FileIcon';
 export * from './CheckmarkIcon';
+export * from './ClockIcon';
+export * from './CalendarIconSmall';

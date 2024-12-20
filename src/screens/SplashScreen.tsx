@@ -6,7 +6,7 @@ export const SplashScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Logo or name</Text>
-      <ActivityIndicator color={COLORS.mainGreen} />
+      <ActivityIndicator color={COLORS.green} />
       <Image
         source={require('../assets/images/splash.png')}
         style={styles.image}

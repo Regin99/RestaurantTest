@@ -1,5 +1,6 @@
-import {CustomInput, Screen} from '../components';
 import {StyleSheet} from 'react-native';
+
+import {CustomInput, Screen} from '../components';
 
 export const ContactsScreen = () => {
   return (

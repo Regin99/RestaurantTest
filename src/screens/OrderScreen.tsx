@@ -1,10 +1,10 @@
 import {StyleSheet, Text, View} from 'react-native';
+import {useDispatch} from 'react-redux';
 
 import {CustomButton, Screen} from '../components';
 import {QRIcon} from '../components/icons';
 
 import {RootStackScreenProps} from '../navigation/types';
-import {useDispatch} from 'react-redux';
 import {clearCart} from '../store/slices/cartSlice';
 
 export const OrderScreen = ({

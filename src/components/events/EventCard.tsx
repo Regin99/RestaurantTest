@@ -1,8 +1,10 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import React from 'react';
-import {ChevronRightIcon} from '../icons';
 import {useNavigation} from '@react-navigation/native';
+
 import {EventType} from '../../types/data';
+import {COLORS} from '../../constants/colors';
+
+import {ChevronRightIcon} from '../icons';
 
 export const EventCard = ({name, description, date, time, id}: EventType) => {
   const navigation = useNavigation();
@@ -13,14 +15,14 @@ export const EventCard = ({name, description, date, time, id}: EventType) => {
 
   return (
     <TouchableOpacity style={styles.cardContainer} onPress={handlePress}>
-      <View style={styles.headerContainer}>
-        <Text style={styles.eventName}>{name}</Text>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>{name}</Text>
         <ChevronRightIcon />
       </View>
       <Text style={styles.description}>{description}</Text>
-      <View style={styles.footerContainer}>
-        <Text style={styles.dateText}>{date}</Text>
-        <Text style={styles.timeText}>{time}</Text>
+      <View style={styles.infoContainer}>
+        <Text style={styles.infoText}>{date}</Text>
+        <Text style={styles.infoText}>{time}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -29,17 +31,17 @@ export const EventCard = ({name, description, date, time, id}: EventType) => {
 const styles = StyleSheet.create({
   cardContainer: {
     borderWidth: 1,
-    borderColor: '#D9D9D9',
+    borderColor: COLORS.lightGray,
     padding: 16,
     borderRadius: 16,
   },
-  headerContainer: {
+  titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 4,
     justifyContent: 'space-between',
   },
-  eventName: {
+  title: {
     fontSize: 16,
     fontWeight: '800',
   },
@@ -47,17 +49,13 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginBottom: 12,
   },
-  footerContainer: {
+  infoContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  dateText: {
+  infoText: {
     fontSize: 12,
-    color: '#999999',
-  },
-  timeText: {
-    fontSize: 12,
-    color: '#999999',
+    color: COLORS.graySecondary,
   },
 });

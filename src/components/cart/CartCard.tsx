@@ -1,21 +1,21 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+
 import {
   addItem,
   removeItem,
   selectItemById,
 } from '../../store/slices/cartSlice';
-import {RemoveAddSection} from '../RemoveAddSection';
 import {ShopItemType} from '../../types/data';
+import {COLORS} from '../../constants/colors';
 
-type CartCardProps = {
-  id: number;
-  price: string;
-} & Partial<ShopItemType>;
+import {RemoveAddSection} from '../RemoveAddSection';
+
+type CartCardProps = Pick<ShopItemType, 'id' | 'price'> & Partial<ShopItemType>;
 
 export const CartCard = ({image, price, info, title, id}: CartCardProps) => {
-  const cartItem = useSelector(selectItemById(id));
   const dispatch = useDispatch();
+  const cartItem = useSelector(selectItemById(id));
 
   const handleAdd = () => {
     dispatch(addItem({id, price}));
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     borderRadius: 12,
-    backgroundColor: '#F1F1F1',
+    backgroundColor: COLORS.whiteSecondary,
     paddingVertical: 12,
     paddingHorizontal: 8,
   },
@@ -73,11 +73,13 @@ const styles = StyleSheet.create({
   },
   priceInfoContainer: {
     flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
   },
   priceContainer: {
     flexDirection: 'row',
   },
   infoText: {
-    color: 'gray',
+    color: COLORS.lightGray,
   },
 });

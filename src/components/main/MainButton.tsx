@@ -1,16 +1,16 @@
 import {useNavigation} from '@react-navigation/native';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
-import {RootStackParamList} from '../../navigation/types';
 
-export const MainButton = ({
-  label,
-  icon,
-  route,
-}: {
+import {RootStackParamList} from '../../navigation/types';
+import {COLORS} from '../../constants/colors';
+
+type MainButtonProps = {
   label: string;
   icon?: () => JSX.Element;
   route?: keyof RootStackParamList;
-}) => {
+};
+
+export const MainButton = ({label, icon, route}: MainButtonProps) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#D9D9D9',
+    borderColor: COLORS.lightGray,
     borderRadius: 16,
     paddingVertical: 22,
     paddingHorizontal: 23,

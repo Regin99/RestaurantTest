@@ -8,7 +8,9 @@ export type RootStackParamList = {
   Events: undefined;
   Bonuses: undefined;
   Cart: undefined;
-  Order: {text: string};
+  Order: {
+    text: string;
+  };
   Event: {
     id: number;
   };

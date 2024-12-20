@@ -1,13 +1,14 @@
-import React, {useMemo} from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {useCallback, useMemo} from 'react';
+import {FlatList, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector} from 'react-redux';
-import {CustomButton, Screen} from '../components';
-import {CartIcon} from '../components/icons';
-import {CartCard} from '../components/cart';
+
 import {COLORS} from '../constants/colors';
 import {SHOP_ITEMS} from '../mocks/data';
 import {selectCartItems, selectTotalPrice} from '../store/slices/cartSlice';
+
+import {CustomButton, Screen} from '../components';
+import {CartCard, CartEmptyComponent} from '../components/cart';
 
 export const CartScreen = () => {
   const navigation = useNavigation();
@@ -27,30 +28,25 @@ export const CartScreen = () => {
     });
   }, [cartData]);
 
-  const renderEmptyCart = () => (
-    <View style={styles.emptyContainer}>
-      <CartIcon />
-      <Text style={styles.emptyTitle}>Your basket is currently empty</Text>
-      <Text style={styles.emptySubtitle}>
-        Add items from the catalogue and they will appear here.
-      </Text>
-    </View>
-  );
-
-  const renderCartItem = ({item}: {item: (typeof filteredData)[0]}) => (
-    <CartCard
-      image={item.image}
-      title={item.title}
-      price={item.price}
-      info={item.info}
-      id={item.id}
-    />
+  const renderItem = useCallback(
+    ({item}: {item: (typeof filteredData)[0]}) => (
+      <CartCard
+        image={item.image}
+        title={item.title}
+        price={item.price}
+        info={item.info}
+        id={item.id}
+      />
+    ),
+    [],
   );
 
   const handleAddProducts = () => {
-    navigation.navigate('Order', {
-      text: 'Your order has been successfully placed!',
-    });
+    totalPrice
+      ? navigation.navigate('Order', {
+          text: 'Your order has been successfully placed!',
+        })
+      : navigation.goBack();
   };
 
   return (
@@ -59,8 +55,8 @@ export const CartScreen = () => {
         data={filteredData}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.listContent}
-        renderItem={renderCartItem}
-        ListEmptyComponent={renderEmptyCart}
+        renderItem={renderItem}
+        ListEmptyComponent={CartEmptyComponent}
         keyExtractor={item => item.id.toString()}
       />
       <CustomButton
@@ -80,24 +76,9 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     gap: 24,
   },
-  emptyContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-  },
-  emptyTitle: {
-    fontSize: 24,
-    fontWeight: '700',
-    textAlign: 'center',
-    marginBottom: 20,
-    marginTop: 44,
-  },
-  emptySubtitle: {
-    fontSize: 20,
-    textAlign: 'center',
-  },
+
   addButton: {
-    backgroundColor: COLORS.mainGreen,
+    backgroundColor: COLORS.green,
     borderRadius: 12,
     justifyContent: 'center',
     alignItems: 'center',
@@ -105,7 +86,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   addButtonText: {
-    color: 'white',
+    color: COLORS.white,
     fontSize: 16,
     fontWeight: '600',
   },

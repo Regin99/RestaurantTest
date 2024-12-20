@@ -1,4 +1,9 @@
-import {FlatList} from 'react-native';
+import {FlatList, StyleSheet} from 'react-native';
+import {useSelector} from 'react-redux';
+
+import {selectTotalPrice} from '../store/slices/cartSlice';
+import {RootStackParamList, RootStackScreenProps} from '../navigation/types';
+
 import {MainButton} from '../components/main';
 import {
   CalendarIcon,
@@ -8,12 +13,9 @@ import {
   ShopIcon,
   TableIcon,
 } from '../components/icons';
-import {RootStackParamList} from '../navigation/types';
 import {Screen, StickyButton} from '../components';
-import {useSelector} from 'react-redux';
-import {selectTotalPrice} from '../store/slices/cartSlice';
 
-export const MainScreen = ({navigation}) => {
+export const MainScreen = ({navigation}: RootStackScreenProps<'Main'>) => {
   const totalPrice = useSelector(selectTotalPrice);
 
   const data = [
@@ -39,12 +41,13 @@ export const MainScreen = ({navigation}) => {
       route: 'Bonuses' as keyof RootStackParamList,
     },
   ];
+
   return (
     <Screen>
       <FlatList
         showsVerticalScrollIndicator={false}
-        style={{flex: 1}}
-        contentContainerStyle={{gap: 24, paddingBottom: 64}}
+        style={styles.list}
+        contentContainerStyle={styles.listContent}
         data={data}
         renderItem={({item}) => (
           <MainButton label={item.label} icon={item.icon} route={item.route} />
@@ -60,3 +63,13 @@ export const MainScreen = ({navigation}) => {
     </Screen>
   );
 };
+
+const styles = StyleSheet.create({
+  list: {
+    flex: 1,
+  },
+  listContent: {
+    gap: 24,
+    paddingBottom: 64,
+  },
+});

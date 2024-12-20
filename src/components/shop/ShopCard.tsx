@@ -10,6 +10,7 @@ import {ShopItemType} from '../../types/data';
 
 import {RemoveAddSection} from '../RemoveAddSection';
 import {CustomButton} from '../CustomButton';
+import {COLORS} from '../../constants/colors';
 
 type ShopCardProps = ShopItemType;
 
@@ -59,6 +60,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     borderWidth: 1,
+    borderColor: COLORS.lightGray,
   },
   cardImage: {
     height: 174,
@@ -82,7 +84,7 @@ const styles = StyleSheet.create({
   price: {
     fontSize: 12,
     lineHeight: 16,
-    color: '#30303080',
+    color: COLORS.black,
     textDecorationLine: 'line-through',
   },
 });

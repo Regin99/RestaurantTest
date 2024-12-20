@@ -1,13 +1,14 @@
-import React from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
-import {Screen} from '../components';
+
 import {BONUSES} from '../mocks/data';
-import {CheckmarkIcon, FileIcon} from '../components/icons';
 import {COLORS} from '../constants/colors';
 import {BonusType} from '../types/data';
 
+import {CheckmarkIcon, FileIcon} from '../components/icons';
+import {Screen} from '../components';
+
 export const BonusesScreen = () => {
-  const renderOrder = ({item}: {item: BonusType}) => (
+  const renderItem = ({item}: {item: BonusType}) => (
     <View style={[styles.orderBox, item.completed && styles.completedOrder]}>
       {item.completed && <FileIcon />}
       {item.completed && (
@@ -27,7 +28,8 @@ export const BonusesScreen = () => {
       </Text>
       <FlatList
         data={BONUSES}
-        renderItem={renderOrder}
+        showsVerticalScrollIndicator={false}
+        renderItem={renderItem}
         keyExtractor={item => item.id.toString()}
         numColumns={2}
         contentContainerStyle={styles.flatListContainer}
@@ -53,10 +55,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
-    backgroundColor: COLORS.secondaryGray,
+    backgroundColor: COLORS.graySecondary,
   },
   completedOrder: {
-    backgroundColor: COLORS.mainGreen,
+    backgroundColor: COLORS.green,
   },
   checkmarkIcon: {
     position: 'absolute',

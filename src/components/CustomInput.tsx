@@ -1,7 +1,8 @@
-import React from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import {FieldError} from 'react-hook-form';
 import {TextInputProps} from 'react-native';
+
+import {COLORS} from '../constants/colors';
 
 type CustomInputProps = {
   label?: string;
@@ -18,8 +19,8 @@ export const CustomInput = ({
     <View style={styles.container}>
       {label && <Text style={styles.label}>{label}</Text>}
       <TextInput
-        style={[styles.input, style]} // Объединяем переданные стили с дефолтными
-        placeholderTextColor="#999999"
+        style={[styles.input, style]}
+        placeholderTextColor={COLORS.lightGray}
         {...props}
       />
       {error && <Text style={styles.errorText}>{error.message}</Text>}
@@ -37,7 +38,7 @@ const styles = StyleSheet.create({
   input: {
     borderWidth: 1,
     borderRadius: 12,
-    borderColor: '#57555533',
+    borderColor: COLORS.graySecondary,
     paddingVertical: 16,
     paddingHorizontal: 20,
     fontSize: 16,
