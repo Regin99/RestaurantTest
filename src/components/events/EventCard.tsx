@@ -56,6 +56,6 @@ const styles = StyleSheet.create({
   },
   infoText: {
     fontSize: 12,
-    color: COLORS.graySecondary,
+    color: COLORS.gray,
   },
 });
